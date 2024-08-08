@@ -1,0 +1,45 @@
+@import 'src/styles/scss/variables';
+
+.language-selector {
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.dropdown-button {
+  background-color: $blue;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 80px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: $breakpoint-md) {
+    min-width: 60px;
+  }
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #ddd;
+}

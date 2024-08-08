@@ -1,0 +1,11 @@
+<header class="header-main" [class.hidden]="isHidden">
+  <div class="container-fluid justify-content-lg-center d-flex">
+    <div class="col-12 col-xl-9 justify-content-between d-flex align-items-center p-1">
+      <app-social-media-links></app-social-media-links>
+      <div class="d-flex">
+        <p (click)="downloadPdf()" class="download d-none d-lg-block"><i class="fa-solid fa-download"></i></p>
+        <app-language-selector></app-language-selector>
+      </div>
+    </div>
+  </div>
+</header>

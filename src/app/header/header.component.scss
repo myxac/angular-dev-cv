@@ -1,0 +1,31 @@
+@import 'src/styles/scss/variables';
+
+.header-main {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $dark-blue;
+  text-align: center;
+  transition: top 0.3s;
+  height: 60px;
+  z-index: 10;
+
+  .download {
+    margin-bottom: 0;
+
+    i {
+      font-size: 30px;
+      padding: 10px;
+      color: $icons-white;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.hidden {
+  top: -100px;
+}
+

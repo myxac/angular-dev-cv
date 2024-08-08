@@ -1,0 +1,50 @@
+@import 'src/styles/scss/variables';
+
+.languages-block {
+  padding: 0 20px;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .main-text {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .language-list {
+    list-style: none;
+    padding: 0;
+
+    .language-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .language-name {
+        flex: 1;
+        font-size: .9rem;
+        color: $black;
+      }
+
+      .language-level {
+        display: flex;
+        gap: 5px;
+
+        .level-circle {
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          background-color: #ddd;
+          transition: background-color 0.3s ease;
+
+          &.filled {
+            background-color: $blue;
+          }
+        }
+      }
+    }
+  }
+}

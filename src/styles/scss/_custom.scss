@@ -1,0 +1,79 @@
+@import 'variables';
+
+body {
+  font-family: "Roboto Light", sans-serif;
+  color: $black;
+}
+
+.header {
+  background-color: #32445a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  background-color: $gray;
+  padding: 10px;
+}
+
+.main-block {
+  padding: 10px;
+}
+
+.title {
+  color: $blue;
+  font-size: 24px;
+
+  hr {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  border-bottom: 2px solid #32445a;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.contact-info,
+.skills,
+.languages {
+  margin-bottom: 20px;
+}
+
+.skills ul,
+.languages ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skills ul li,
+.languages ul li {
+  background-color: #445d77;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  color: white;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #32445a;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+

@@ -1,0 +1,34 @@
+@import 'src/styles/scss/variables';
+
+.personal-interests {
+  padding: 0 20px;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .main-text {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .contact-info {
+    .item {
+      margin: 14px 0;
+      font-size: .9rem;
+      text-decoration: none;
+      color: $black;
+
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        background-color: $blue;
+      }
+    }
+  }
+}

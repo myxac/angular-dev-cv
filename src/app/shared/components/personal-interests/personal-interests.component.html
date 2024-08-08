@@ -1,0 +1,11 @@
+<div class="personal-interests">
+  <div class="personal-interests__title title">
+    <div class="main-text">{{model?.title}}</div>
+    <hr>
+  </div>
+  <div class="contact-info">
+    <ng-container *ngIf="model">
+      <p *ngFor="let item of model.interests"  class="item">{{item}}</p>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<ng-container *ngIf="model?.educationList?.length">
+  <div class="education">
+    <div class="education__title title">
+      <h2 class="title">{{model?.title}}</h2>
+      <hr>
+    </div>
+    <div class="education-item" *ngFor="let education of model?.educationList">
+      <div class="education-header">
+        <span class="institution">{{ education.institution }}</span>
+        <span class="date">{{ education.startDate }} - {{education.endDate}}</span>
+      </div>
+      <div class="education-degree">{{ education.degree }}</div>
+      <ul class="education-details">
+        <li>{{ education.details }}</li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

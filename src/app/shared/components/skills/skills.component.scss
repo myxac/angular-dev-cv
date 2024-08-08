@@ -1,0 +1,24 @@
+@import 'src/styles/scss/variables';
+
+.skills {
+  padding: 20px 20px 0 20px;
+
+  &__title {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  &__list {
+    .skills-item {
+      font-size: .9rem;
+
+      span:first-child {
+        font-weight: bold;
+
+        &::after {
+          content: ': ';
+        }
+      }
+    }
+  }
+}

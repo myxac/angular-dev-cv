@@ -1,0 +1,16 @@
+<ng-container *ngIf="model?.skills">
+  <div class="skills">
+    <div class="skills__title title">
+      <h2 class="title">{{model?.title}}</h2>
+      <hr>
+    </div>
+    <div class="skills__list">
+      <ng-container *ngFor="let item of model?.skills | keys">
+        <div class="skills-item">
+          <span>{{item.value[0]}}</span>
+          <span>{{item.value[1]}}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

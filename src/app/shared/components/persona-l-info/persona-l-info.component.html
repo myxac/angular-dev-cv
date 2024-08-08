@@ -1,0 +1,15 @@
+<div class="personal-info">
+  <div class="personal-info__photo">
+    <div class="background-image"></div>
+  </div>
+  <div class="personal-info__title title">
+    <div class="main-text">{{model?.title}}</div>
+    <hr>
+  </div>
+  <div class="contact-info">
+    <ng-container *ngIf="model">
+      <p class="item" *ngFor='let item of model.personalData | keys'><i
+        [ngClass]="getItemClass(item.key)"></i>{{item.value}}</p>
+    </ng-container>
+  </div>
+</div>

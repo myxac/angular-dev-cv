@@ -1,0 +1,53 @@
+@import 'src/styles/scss/variables';
+
+.education {
+  padding: 20px 20px 0 20px;
+
+  &__title {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .education-item {
+    border-bottom: 1px solid #e0e0e0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .education-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      .institution {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: $blue;
+      }
+
+      .date {
+        font-size: 0.9rem;
+        color: $light-gray;
+      }
+    }
+
+    .education-degree {
+      font-size: 1.1rem;
+      color: $black;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .education-details {
+      list-style: disc;
+      padding-left: 20px;
+
+      li {
+        font-size: .9rem;
+        color: $black;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

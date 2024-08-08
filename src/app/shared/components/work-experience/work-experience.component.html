@@ -1,0 +1,18 @@
+<ng-container *ngIf="model?.erfahrung?.length">
+  <div class="work-experience">
+    <div class="work-experience__title title">
+      <h2 class="title">{{model?.title}}</h2>
+      <hr>
+    </div>
+    <div class="work-experience__experience-item" *ngFor="let experience of model?.erfahrung">
+      <div class="experience-header">
+        <span class="company">{{ experience.company }}</span>
+        <span class="date">{{ experience.startDate }} - {{experience.endDate}}</span>
+      </div>
+      <div class="experience-role">{{ experience.job }}</div>
+      <ul class="experience-details">
+        <li *ngFor="let detail of experience.tasks">{{ detail }}</li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

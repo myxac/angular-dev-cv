@@ -1,0 +1,5 @@
+<div class="social-media" *ngIf="model">
+  <ng-container *ngFor="let link of model | keys">
+    <a *ngIf="link.value" [href]=link.value target="_blank" class="item"><i [ngClass]="getItemClass(link.key)"></i></a>
+  </ng-container>
+</div>

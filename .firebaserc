@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mycv-dev": {
+      "hosting": {
+        "myCV": [
+          "mycv-dev"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mycv-dev"
+  }
+}

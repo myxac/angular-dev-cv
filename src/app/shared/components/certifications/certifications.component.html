@@ -1,0 +1,16 @@
+<ng-container *ngIf="model?.certificationsList">
+  <div class="certification pb-5">
+    <div class="certification__title title">
+      <h2 class="title">{{model?.title}}</h2>
+      <hr>
+    </div>
+    <div class="certification__list">
+      <ng-container *ngFor="let item of model?.certificationsList">
+        <div class="certification-item">
+          <span>{{item.certification}}</span>
+          <span>{{item.date}}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

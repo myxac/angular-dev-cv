@@ -1,0 +1,16 @@
+<div class="languages-block">
+  <div class="languages-block__title title">
+    <div class="main-text">{{model?.title}}</div>
+    <hr>
+  </div>
+  <ul class="language-list">
+    <ng-container *ngIf="model">
+    <li class="language-item" *ngFor="let language of model.languageKnowledge">
+      <span class="language-name">{{ language.name }}</span>
+      <div class="language-level">
+        <div class="level-circle" *ngFor="let circle of createCircles()" [ngClass]="{'filled': circle <= language.level}"></div>
+      </div>
+    </li>
+    </ng-container>
+  </ul>
+</div>
