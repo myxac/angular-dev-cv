@@ -4,7 +4,6 @@
 /tmp
 /out-tsc
 /bazel-out
-/cis
 
 # Node
 /node_modules

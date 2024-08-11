@@ -24,6 +24,10 @@ body {
 
 .main-block {
   padding: 10px;
+
+  &:last-child {
+    padding-bottom: 2rem;
+  }
 }
 
 .title {
