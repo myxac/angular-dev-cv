@@ -9,6 +9,7 @@
         <span class="company">{{ experience.company }}</span>
         <span class="date">{{ experience.startDate }} - {{experience.endDate}}</span>
       </div>
+      <div class="experience-place">{{experience.place}}</div>
       <div class="experience-role">{{ experience.job }}</div>
       <ul class="experience-details">
         <li *ngFor="let detail of experience.tasks">{{ detail }}</li>
