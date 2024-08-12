@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from "rxjs";
 
-import { ApiService, LanguageService, PersonalInfoInterface } from "../../internals";
+import { ApiService, LanguageService, PersonalInfoInterface, StructuredDataService } from "../../internals";
 
 @Component({
   selector: 'app-persona-l-info',
@@ -17,6 +17,7 @@ export class PersonaLInfoComponent implements OnInit, OnDestroy {
   constructor(
     private apiService: ApiService,
     private languageService: LanguageService,
+    private structuredDataService: StructuredDataService,
   ) {
   }
 
@@ -60,7 +61,24 @@ export class PersonaLInfoComponent implements OnInit, OnDestroy {
   private getComponentData(): void {
     this.apiService.getComponentData(this.component).pipe(
       takeUntil(this.onDestroy$),
-      tap((result: PersonalInfoInterface) => this.model = result)
+      tap((result: PersonalInfoInterface) => this.model = result),
+      tap(r => this.addStructuredData()),
     ).subscribe();
+  }
+
+  private addStructuredData(): void {
+    const personStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": this.model?.personalData?.name,
+      "jobTitle": "Frontend Angular Developer",
+      "email": this.model?.personalData?.email,
+      "telephone": this.model?.personalData?.phone,
+      "sameAs": [
+        this.model?.githubLink,
+      ],
+    };
+
+    this.structuredDataService.addStructuredData(personStructuredData);
   }
 }

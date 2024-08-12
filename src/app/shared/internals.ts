@@ -26,6 +26,7 @@ export { ApiService } from './services/api.service';
 export { buildApiModel, ApiModelType } from './models/api.model';
 export { LanguageService } from './services/language.service';
 export { PdfGeneratorService } from './services/pdf-generator.service';
+export { StructuredDataService } from './services/structured-data.service';
 
 export { KeysPipe } from './pipes/keys.pipe';
 

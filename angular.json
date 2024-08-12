@@ -45,7 +45,7 @@
               "raf",
               "rgbcolor",
               "html2canvas",
-              "canvg",
+              "canvg"
             ],
             "styles": [
               "src/styles/styles.scss"

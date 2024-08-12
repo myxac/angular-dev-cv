@@ -27,8 +27,8 @@ class PersonalInfoModel implements PersonalInfoInterface {
 
 class PersonalDataModel implements PersonalDataInterface {
   constructor(
-    public name?: string,
-    public email?: string,
+    public name: string,
+    public email: string,
     public phone?: number,
     public address?: string,
     public birthday?: string,

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
@@ -21,7 +20,6 @@ import { HeaderModule } from "./header/header.module";
     AppRoutingModule,
     SharedModule,
     FontAwesomeModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase())
   ],
   providers: [
