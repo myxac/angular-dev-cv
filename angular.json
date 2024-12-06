@@ -89,10 +89,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "myCV:build:production"
+              "buildTarget": "myCV:build:production"
             },
             "development": {
-              "browserTarget": "myCV:build:development"
+              "buildTarget": "myCV:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,7 +100,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "myCV:build"
+            "buildTarget": "myCV:build"
           }
         },
         "test": {
