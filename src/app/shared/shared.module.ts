@@ -9,7 +9,9 @@ import {
   LanguageSelectorComponent,
   PersonaLInfoComponent,
   PersonalInterestsComponent,
-  SkillsComponent, SocialMediaLinksComponent,
+  SkillsComponent,
+  SocialMediaLinksComponent,
+  SortPipe,
   WorkExperienceComponent,
 } from '../shared/internals';
 
@@ -25,6 +27,7 @@ import {
     LanguageSelectorComponent,
     CertificationsComponent,
     SocialMediaLinksComponent,
+    SortPipe,
   ],
   exports: [
     PersonaLInfoComponent,

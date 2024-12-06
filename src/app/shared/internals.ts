@@ -17,7 +17,7 @@ export { SkillsComponent } from './components/skills/skills.component';
 export { buildSkillsModel, SkillsInterface } from './models/skills.model';
 
 export { CertificationsComponent } from './components/certifications/certifications.component';
-export { buildCertificationsModel, CertificationsInterface } from './models/certifications.model';
+export { buildCertificationsModel, CertificationsInterface, CertificationsListInterface } from './models/certifications.model';
 
 export { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 export { SocialMediaLinksComponent } from './components/social-media-links/social-media-links.component';
@@ -29,4 +29,5 @@ export { PdfGeneratorService } from './services/pdf-generator.service';
 export { StructuredDataService } from './services/structured-data.service';
 
 export { KeysPipe } from './pipes/keys.pipe';
+export { SortPipe } from './pipes/sort.pipe';
 

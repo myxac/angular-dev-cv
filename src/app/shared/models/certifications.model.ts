@@ -1,12 +1,18 @@
+export interface CertificationsListInterface {
+  certification: string;
+  date: string;
+  order: number
+}
+
 export interface CertificationsInterface {
   title: string;
-  certificationsList?: [{ certification: string, date: string }],
+  certificationsList?: CertificationsListInterface[],
 }
 
 export class CertificationsModel implements CertificationsInterface {
   constructor(
     public title: string,
-    public certificationsList?: [{ certification: string, date: string }],
+    public certificationsList?: CertificationsListInterface[],
   ) {
   }
 }
