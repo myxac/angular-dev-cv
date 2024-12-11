@@ -1,15 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil, tap } from "rxjs";
+import { map, Subject, takeUntil, tap } from "rxjs";
 
-import { ApiService, CertificationsInterface, LanguageService, SortPipe, TestPipe } from "../../internals";
-import { KeyValuePipe } from '@angular/common';
+import { ApiService, CertificationsInterface, LanguageService, } from "../../internals";
 
 @Component({
   selector: 'app-certifications',
   templateUrl: './certifications.component.html',
   styleUrls: ['./certifications.component.scss'],
   standalone: true,
-  imports: [SortPipe, TestPipe],
 })
 export class CertificationsComponent implements OnInit, OnDestroy {
   public model?: CertificationsInterface;
@@ -41,6 +39,7 @@ export class CertificationsComponent implements OnInit, OnDestroy {
     this.apiService.getComponentData(this.component).pipe(
       takeUntil(this.onDestroy$),
       tap((result: CertificationsInterface) => this.model = result),
+      tap(() => this.model?.certificationsList?.sort((a, b) => a.order > b.order? -1 : 1)),
     ).subscribe();
   }
 
