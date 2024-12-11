@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "allowedCommonJsDependencies": [
+              "core-js/modules/es.array.index-of.js",
               "core-js/modules/es.array.iterator.js",
               "core-js/modules/es.array.reduce.js",
               "core-js/modules/es.array.reverse.js",

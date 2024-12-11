@@ -6,10 +6,13 @@ import { ApiService, LanguageService, LanguagesInterface } from "../../internals
 @Component({
   selector: 'app-languages',
   templateUrl: './languages.component.html',
-  styleUrls: ['./languages.component.scss']
+  styleUrls: ['./languages.component.scss'],
+  standalone: true,
+  imports: [],
+
 })
 export class LanguagesComponent implements OnInit, OnDestroy {
-  public model: LanguagesInterface | undefined;
+  public model!: LanguagesInterface;
 
   private onDestroy$: Subject<void> = new Subject<void>();
   private readonly component: string = 'languages';

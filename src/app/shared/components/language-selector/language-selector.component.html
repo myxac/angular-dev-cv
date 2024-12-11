@@ -1,12 +1,13 @@
 <div class="language-selector">
   <button class="dropdown-button" (click)="toggleDropdown()">
-    {{ currentLanguage | slice: 0:2 }}
+    {{ currentLanguage | slice : 0 : 2 }}
   </button>
   <ul class="dropdown-menu" [class.show]="isDropdownOpen">
-    <ng-container *ngFor="let language of languages">
-      <li *ngIf="language !== currentLanguage" (click)="selectLanguage(language)">
-        {{ language | slice: 0 : 2}}
-      </li>
-    </ng-container>
+    @for (language of languages; track $index) { @if (language !==
+    currentLanguage) {
+    <li (click)="selectLanguage(language)">
+      {{ language | slice : 0 : 2 }}
+    </li>
+    } }
   </ul>
 </div>

@@ -1,12 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from "rxjs";
+import { KeyValuePipe } from '@angular/common';
 
 import { ApiService } from "../../internals";
 
 @Component({
   selector: 'app-social-media-links',
   templateUrl: './social-media-links.component.html',
-  styleUrls: ['./social-media-links.component.scss']
+  styleUrls: ['./social-media-links.component.scss'],
+  standalone: true,
+  imports: [KeyValuePipe],
 })
 
 export class SocialMediaLinksComponent implements OnInit, OnDestroy {

@@ -1,15 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from "rxjs";
 
-import { ApiService, CertificationsInterface, LanguageService } from "../../internals";
+import { ApiService, CertificationsInterface, LanguageService, SortPipe, TestPipe } from "../../internals";
+import { KeyValuePipe } from '@angular/common';
 
 @Component({
   selector: 'app-certifications',
   templateUrl: './certifications.component.html',
-  styleUrls: ['./certifications.component.scss']
+  styleUrls: ['./certifications.component.scss'],
+  standalone: true,
+  imports: [SortPipe, TestPipe],
 })
 export class CertificationsComponent implements OnInit, OnDestroy {
-  public model: CertificationsInterface | undefined;
+  public model?: CertificationsInterface;
 
   private onDestroy$: Subject<void> = new Subject<void>();
   private readonly component: string = 'certifications';

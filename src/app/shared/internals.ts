@@ -28,6 +28,6 @@ export { LanguageService } from './services/language.service';
 export { PdfGeneratorService } from './services/pdf-generator.service';
 export { StructuredDataService } from './services/structured-data.service';
 
-export { KeysPipe } from './pipes/keys.pipe';
 export { SortPipe } from './pipes/sort.pipe';
+export { TestPipe } from './pipes/test.pipe';
 

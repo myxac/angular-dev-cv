@@ -1,11 +1,17 @@
 import { Component, HostListener } from '@angular/core';
 
-import { PdfGeneratorService } from "../shared/internals";
+import {
+  PdfGeneratorService,
+  SocialMediaLinksComponent,
+  LanguageSelectorComponent,
+} from '../shared/internals';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [SocialMediaLinksComponent, LanguageSelectorComponent],
 })
 export class HeaderComponent {
   public isHidden = false;
@@ -14,7 +20,8 @@ export class HeaderComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const currentScroll: number = window.scrollY || document.documentElement.scrollTop;
+    const currentScroll: number =
+      window.scrollY || document.documentElement.scrollTop;
     if (currentScroll > 300) {
       this.isHidden = currentScroll > this.lastScrollTop;
     } else {
@@ -23,8 +30,7 @@ export class HeaderComponent {
     this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }
 
-  constructor(private pdfGeneratorService: PdfGeneratorService) {
-  }
+  constructor(private pdfGeneratorService: PdfGeneratorService) {}
 
   public downloadPdf(): void {
     this.pdfGeneratorService.generatePdf('content');

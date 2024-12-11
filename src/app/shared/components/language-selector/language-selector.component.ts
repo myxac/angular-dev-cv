@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LanguageService, ApiService } from "../../internals";
+import { LanguageService, ApiService } from '../../internals';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-language-selector',
   templateUrl: './language-selector.component.html',
-  styleUrls: ['./language-selector.component.scss']
+  styleUrls: ['./language-selector.component.scss'],
+  standalone: true,
+  imports: [SlicePipe],
 })
 export class LanguageSelectorComponent implements OnInit {
   public languages: string[] = ['DE', 'ENG', 'UKR'];
@@ -14,12 +17,10 @@ export class LanguageSelectorComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private languageService: LanguageService,
-  ) {
-  }
+    private languageService: LanguageService
+  ) {}
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;

@@ -1,12 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from "rxjs";
+import { KeyValuePipe } from '@angular/common';
 
 import { ApiService, LanguageService, SkillsInterface } from "../../internals";
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+  styleUrls: ['./skills.component.scss'],
+  standalone: true,
+  imports: [KeyValuePipe],
 })
 export class SkillsComponent implements OnInit, OnDestroy {
   public model: SkillsInterface | undefined;

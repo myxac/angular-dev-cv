@@ -6,7 +6,8 @@ import { ApiModelType, ApiService, LanguageService, PersonalInterestsInterface }
 @Component({
   selector: 'app-personal-interests',
   templateUrl: './personal-interests.component.html',
-  styleUrls: ['./personal-interests.component.scss']
+  styleUrls: ['./personal-interests.component.scss'],
+  standalone: true,
 })
 export class PersonalInterestsComponent implements OnInit, OnDestroy {
   public model: PersonalInterestsInterface | undefined;

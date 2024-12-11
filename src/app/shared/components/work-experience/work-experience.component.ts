@@ -6,7 +6,8 @@ import { ApiService, LanguageService, WorkExperienceInterface } from "../../inte
 @Component({
   selector: 'app-work-experience',
   templateUrl: './work-experience.component.html',
-  styleUrls: ['./work-experience.component.scss']
+  styleUrls: ['./work-experience.component.scss'],
+  standalone: true,
 })
 export class WorkExperienceComponent implements OnInit, OnDestroy {
   public model: WorkExperienceInterface | undefined;

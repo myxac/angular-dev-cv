@@ -6,7 +6,8 @@ import { ApiService, EducationInterface, LanguageService } from "../../internals
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
-  styleUrls: ['./education.component.scss']
+  styleUrls: ['./education.component.scss'],
+  standalone: true,
 })
 export class EducationComponent implements OnInit, OnDestroy {
   public model: EducationInterface | undefined;

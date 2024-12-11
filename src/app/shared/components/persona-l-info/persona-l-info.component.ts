@@ -1,15 +1,23 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil, tap } from "rxjs";
+import { Subject, takeUntil, tap } from 'rxjs';
+import { KeyValuePipe } from '@angular/common';
 
-import { ApiService, LanguageService, PersonalInfoInterface, StructuredDataService } from "../../internals";
+import {
+  ApiService,
+  LanguageService,
+  PersonalInfoInterface,
+  StructuredDataService,
+} from '../../internals';
 
 @Component({
   selector: 'app-persona-l-info',
   templateUrl: './persona-l-info.component.html',
-  styleUrls: ['./persona-l-info.component.scss']
+  styleUrls: ['./persona-l-info.component.scss'],
+  standalone: true,
+  imports: [KeyValuePipe],
 })
 export class PersonaLInfoComponent implements OnInit, OnDestroy {
-  public model: PersonalInfoInterface | undefined;
+  public model?: PersonalInfoInterface;
 
   private readonly component: string = 'personalInfo';
   private onDestroy$: Subject<void> = new Subject<void>();
@@ -17,17 +25,18 @@ export class PersonaLInfoComponent implements OnInit, OnDestroy {
   constructor(
     private apiService: ApiService,
     private languageService: LanguageService,
-    private structuredDataService: StructuredDataService,
-  ) {
-  }
+    private structuredDataService: StructuredDataService
+  ) {}
 
   public ngOnInit(): void {
     this.getComponentData();
 
-    this.languageService.defaultLanguage$.pipe(
-      takeUntil(this.onDestroy$),
-      tap(() => this.getComponentData()),
-    ).subscribe();
+    this.languageService.defaultLanguage$
+      .pipe(
+        takeUntil(this.onDestroy$),
+        tap(() => this.getComponentData())
+      )
+      .subscribe();
   }
 
   public ngOnDestroy(): void {
@@ -35,7 +44,7 @@ export class PersonaLInfoComponent implements OnInit, OnDestroy {
     this.onDestroy$.complete();
   }
 
-  public getItemClass(key: string): string {
+  public getItemClass(key: any): string {
     switch (key) {
       case 'name':
         return 'fas fa-user';
@@ -54,29 +63,30 @@ export class PersonaLInfoComponent implements OnInit, OnDestroy {
       case 'workPermit':
         return 'fas fa-passport';
       default:
-        return 'fas fa-user'
+        return 'fas fa-user';
     }
   }
 
   private getComponentData(): void {
-    this.apiService.getComponentData(this.component).pipe(
-      takeUntil(this.onDestroy$),
-      tap((result: PersonalInfoInterface) => this.model = result),
-      tap(r => this.addStructuredData()),
-    ).subscribe();
+    this.apiService
+      .getComponentData(this.component)
+      .pipe(
+        takeUntil(this.onDestroy$),
+        tap((result: PersonalInfoInterface) => (this.model = result)),
+        tap((r) => this.addStructuredData())
+      )
+      .subscribe();
   }
 
   private addStructuredData(): void {
     const personStructuredData = {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": this.model?.personalData?.name,
-      "jobTitle": "Frontend Angular Developer",
-      "email": this.model?.personalData?.email,
-      "telephone": this.model?.personalData?.phone,
-      "sameAs": [
-        this.model?.githubLink,
-      ],
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: this.model?.personalData?.name,
+      jobTitle: 'Frontend Angular Developer',
+      email: this.model?.personalData?.email,
+      telephone: this.model?.personalData?.phone,
+      sameAs: [this.model?.githubLink],
     };
 
     this.structuredDataService.addStructuredData(personStructuredData);

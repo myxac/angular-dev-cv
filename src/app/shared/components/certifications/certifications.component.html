@@ -1,16 +1,16 @@
-<ng-container *ngIf="model?.certificationsList">
-  <div class="certification">
-    <div class="certification__title title">
-      <h2 class="title">{{model?.title}}</h2>
-      <hr>
-    </div>
-    <div class="certification__list">
-      <ng-container *ngFor="let item of model?.certificationsList | sort: 'desc'" >
-        <div class="certification-item">
-          <span>{{item.certification}}</span>
-          <span>{{item.date}}</span>
-        </div>
-      </ng-container>
-    </div>
+@if (model) {
+<div class="certification">
+  <div class="certification__title title">
+    <h2 class="title">{{ model.title }}</h2>
+    <hr />
   </div>
-</ng-container>
+  <div class="certification__list">
+    @for (item of model.certificationsList; track item) {
+      <div class="certification-item">
+        <span>{{ item.certification }}</span>
+        <span>{{ item.date }}</span>
+      </div>
+    }
+  </div>
+</div>
+}
