@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil, tap } from "rxjs";
+import { takeUntil, tap } from 'rxjs';
 import { KeyValuePipe } from '@angular/common';
 
-import { ApiService, LanguageService, SkillsInterface } from "../../internals";
+import { BaseComponent, SkillsInterface } from '../../internals';
 
 @Component({
   selector: 'app-skills',
@@ -11,36 +11,21 @@ import { ApiService, LanguageService, SkillsInterface } from "../../internals";
   standalone: true,
   imports: [KeyValuePipe],
 })
-export class SkillsComponent implements OnInit, OnDestroy {
+export class SkillsComponent
+  extends BaseComponent
+  implements OnInit, OnDestroy
+{
   public model: SkillsInterface | undefined;
 
-  private onDestroy$: Subject<void> = new Subject<void>();
   private readonly component: string = 'skills';
 
-  constructor(
-    private apiService: ApiService,
-    private languageService: LanguageService,
-  ) {
-  }
-
-  public ngOnInit(): void {
-    this.getComponentData();
-
-    this.languageService.defaultLanguage$.pipe(
-      takeUntil(this.onDestroy$),
-      tap(() => this.getComponentData()),
-    ).subscribe();
-  }
-
-  public ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
-  }
-
-  private getComponentData(): void {
-    this.apiService.getComponentData(this.component).pipe(
-      takeUntil(this.onDestroy$),
-      tap((result: SkillsInterface) => this.model = result),
-    ).subscribe();
+  protected override getComponentData(): void {
+    this.apiService
+      .getComponentData(this.component)
+      .pipe(
+        takeUntil(this.onDestroy$),
+        tap((result: SkillsInterface) => (this.model = result))
+      )
+      .subscribe();
   }
 }

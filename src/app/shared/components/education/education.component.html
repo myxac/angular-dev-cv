@@ -4,7 +4,7 @@
     <h2 class="title">{{ model?.title }}</h2>
     <hr />
   </div>
-  @for (education of model?.educationList; track education) {
+  @for (education of model?.educationList; track education.degree) {
     <div class="education-item">
       <div class="education-header">
         <span class="institution">{{ education.institution }}</span>

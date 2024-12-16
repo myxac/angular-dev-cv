@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [HeaderComponent, RouterOutlet, FontAwesomeModule,],
+  imports: [HeaderComponent, RouterOutlet, FontAwesomeModule],
 })
 export class AppComponent {
   title = 'Mykyta Bozhko FrontDev';

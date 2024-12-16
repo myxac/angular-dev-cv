@@ -1,8 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil, tap } from "rxjs";
+import {
+  Component,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { KeyValuePipe } from '@angular/common';
 
-import { ApiService } from "../../internals";
+import { ApiService, SocialMediaLinksInterface } from '../../internals';
 
 @Component({
   selector: 'app-social-media-links',
@@ -11,28 +15,18 @@ import { ApiService } from "../../internals";
   standalone: true,
   imports: [KeyValuePipe],
 })
+export class SocialMediaLinksComponent {
+  public model = signal<SocialMediaLinksInterface | undefined>(undefined);
 
-export class SocialMediaLinksComponent implements OnInit, OnDestroy {
-  public model?: { github?: string, linkedin?: string, xing?: string };
+  private readonly apiService = inject(ApiService);
 
-  private onDestroy$: Subject<void> = new Subject<void>();
-
-  constructor(private apiService: ApiService) {
+  constructor() {
+    effect(() => {
+      this.model = signal(this.apiService.getSocialMediaLinks()());
+    });
   }
 
-  public ngOnInit(): void {
-    this.apiService.getSocialMediaLinks().pipe(
-      takeUntil(this.onDestroy$),
-      tap((result: any) => this.model = result.links),
-    ).subscribe()
-  }
-
-  public ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
-  }
-
-  public getItemClass(key: string): string {
+  public getItemClass(key: any): string {
     switch (key) {
       case 'github':
         return 'fa-brands fa-github';
@@ -41,7 +35,7 @@ export class SocialMediaLinksComponent implements OnInit, OnDestroy {
       case 'xing':
         return 'fa-brands fa-xing';
       default:
-        return 'fas fa-user'
+        return 'fas fa-user';
     }
   }
 }

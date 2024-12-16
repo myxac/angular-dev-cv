@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { LanguageService, ApiService } from '../../internals';
 import { SlicePipe } from '@angular/common';
@@ -10,30 +10,27 @@ import { SlicePipe } from '@angular/common';
   standalone: true,
   imports: [SlicePipe],
 })
-export class LanguageSelectorComponent implements OnInit {
-  public languages: string[] = ['DE', 'ENG', 'UKR'];
-  public currentLanguage: string = 'DE';
+export class LanguageSelectorComponent {
+  public languages = signal<string[]>(['DE', 'ENG', 'UKR']);
+  public currentLanguage = signal<string>('DE');
   public isDropdownOpen: boolean = false;
 
-  constructor(
-    private apiService: ApiService,
-    private languageService: LanguageService
-  ) {}
-
-  public ngOnInit(): void {}
+  private languageService = inject(LanguageService);
+  private apiService = inject(ApiService);
 
   public toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   public selectLanguage(language: string): void {
-    this.currentLanguage = language;
+    this.currentLanguage.set(language);
     this.isDropdownOpen = false;
     this.languageChanged(language);
   }
 
   public languageChanged(language: string): void {
     this.apiService.setDefaultLanguage(language);
-    this.languageService.defaultLanguage$.next(language);
+
+    this.languageService.defaultLanguage.set(language);
   }
 }

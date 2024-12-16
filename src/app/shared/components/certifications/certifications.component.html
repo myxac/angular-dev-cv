@@ -5,11 +5,11 @@
     <hr />
   </div>
   <div class="certification__list">
-    @for (item of model.certificationsList; track item.order) {
-      <div class="certification-item">
-        <span>{{ item.certification }}</span>
-        <span>{{ item.date }}</span>
-      </div>
+    @for (item of model.certificationsList | sort : 'desc'; track item.order) {
+    <div class="certification-item">
+      <span>{{ item.certification }}</span>
+      <span>{{ item.date }}</span>
+    </div>
     }
   </div>
 </div>

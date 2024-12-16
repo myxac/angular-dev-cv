@@ -43,6 +43,7 @@
               "core-js/modules/es.string.trim.js",
               "core-js/modules/web.dom-collections.iterator.js",
               "core-js/modules/es.array.index-of.js'",
+              "./node_modules/font-awesome/css/font-awesome.css",
               "raf",
               "rgbcolor",
               "html2canvas",

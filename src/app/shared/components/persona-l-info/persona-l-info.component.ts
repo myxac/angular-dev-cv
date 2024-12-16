@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { takeUntil, tap } from 'rxjs';
 import { KeyValuePipe } from '@angular/common';
 
 import {
-  ApiService,
-  LanguageService,
+  BaseComponent,
   PersonalInfoInterface,
   StructuredDataService,
 } from '../../internals';
@@ -16,33 +15,14 @@ import {
   standalone: true,
   imports: [KeyValuePipe],
 })
-export class PersonaLInfoComponent implements OnInit, OnDestroy {
+export class PersonaLInfoComponent
+  extends BaseComponent
+  implements OnInit, OnDestroy
+{
   public model?: PersonalInfoInterface;
 
   private readonly component: string = 'personalInfo';
-  private onDestroy$: Subject<void> = new Subject<void>();
-
-  constructor(
-    private apiService: ApiService,
-    private languageService: LanguageService,
-    private structuredDataService: StructuredDataService
-  ) {}
-
-  public ngOnInit(): void {
-    this.getComponentData();
-
-    this.languageService.defaultLanguage$
-      .pipe(
-        takeUntil(this.onDestroy$),
-        tap(() => this.getComponentData())
-      )
-      .subscribe();
-  }
-
-  public ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
-  }
+  private readonly structuredDataService = inject(StructuredDataService);
 
   public getItemClass(key: any): string {
     switch (key) {
@@ -67,7 +47,7 @@ export class PersonaLInfoComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getComponentData(): void {
+  protected override getComponentData(): void {
     this.apiService
       .getComponentData(this.component)
       .pipe(

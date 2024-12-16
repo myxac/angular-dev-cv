@@ -1,3 +1,5 @@
+export { BaseComponent } from './components/base/base.component';
+
 export { PersonaLInfoComponent } from './components/persona-l-info/persona-l-info.component';
 export {
   PersonalInfoInterface,
@@ -39,7 +41,12 @@ export {
 } from './models/certifications.model';
 
 export { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+
 export { SocialMediaLinksComponent } from './components/social-media-links/social-media-links.component';
+export {
+  SocialMediaLinksInterface,
+  builSocialMediaLinksModel,
+} from './models/social-media-links.model';
 
 export { ApiService } from './services/api.service';
 export { buildApiModel, ApiModelType } from './models/api.model';

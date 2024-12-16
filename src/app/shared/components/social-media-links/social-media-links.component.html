@@ -1,6 +1,6 @@
-@if(model) {
+@if(model()) {
 <div class="social-media">
-  @for(link of model | keyvalue; track link) { @if(link.value) {
+  @for(link of ($any(model()) | keyvalue); track link) { @if(link.value) {
   <a [href]="link.value" target="_blank" class="item"
     ><i [class]="getItemClass(link.key)"></i
   ></a>

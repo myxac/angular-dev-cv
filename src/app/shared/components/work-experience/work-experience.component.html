@@ -4,7 +4,7 @@
     <h2 class="title">{{ model?.title }}</h2>
     <hr />
   </div>
-  @for (experience of model?.erfahrung; track experience) {
+  @for (experience of model?.erfahrung; track experience.tasks) {
   <div class="work-experience__experience-item">
     <div class="experience-header">
       <span class="company">{{ experience.company }}</span>
@@ -15,7 +15,7 @@
     <div class="experience-place">{{ experience.place }}</div>
     <div class="experience-role">{{ experience.job }}</div>
     <ul class="experience-details">
-      @for (detail of experience.tasks; track $index) { 
+      @for (detail of experience.tasks; track $index) {
       <li>{{ detail }}</li>
       }
     </ul>

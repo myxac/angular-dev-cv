@@ -1,46 +1,31 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, Subject, takeUntil, tap } from "rxjs";
+import { takeUntil, tap } from 'rxjs';
 
-import { ApiService, CertificationsInterface, LanguageService, } from "../../internals";
+import { BaseComponent, CertificationsInterface } from '../../internals';
+import { SortPipe } from '../../pipes/sort.pipe';
 
 @Component({
   selector: 'app-certifications',
   templateUrl: './certifications.component.html',
   styleUrls: ['./certifications.component.scss'],
   standalone: true,
+  imports: [SortPipe],
 })
-export class CertificationsComponent implements OnInit, OnDestroy {
+export class CertificationsComponent
+  extends BaseComponent
+  implements OnInit, OnDestroy
+{
   public model?: CertificationsInterface;
 
-  private onDestroy$: Subject<void> = new Subject<void>();
   private readonly component: string = 'certifications';
 
-  constructor(
-    private apiService: ApiService,
-    private languageService: LanguageService,
-  ) {
+  protected override getComponentData(): void {
+    this.apiService
+      .getComponentData(this.component)
+      .pipe(
+        takeUntil(this.onDestroy$),
+        tap((result: CertificationsInterface) => (this.model = result))
+      )
+      .subscribe();
   }
-
-  public ngOnInit(): void {
-    this.getComponentData();
-
-    this.languageService.defaultLanguage$.pipe(
-      takeUntil(this.onDestroy$),
-      tap(() => this.getComponentData()),
-    ).subscribe();
-  }
-
-  public ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
-  }
-
-  private getComponentData(): void {
-    this.apiService.getComponentData(this.component).pipe(
-      takeUntil(this.onDestroy$),
-      tap((result: CertificationsInterface) => this.model = result),
-      tap(() => this.model?.certificationsList?.sort((a, b) => a.order > b.order? -1 : 1)),
-    ).subscribe();
-  }
-
 }

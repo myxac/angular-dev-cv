@@ -13,10 +13,10 @@ import {
   PersonalInterestsInterface,
   SkillsInterface,
   WorkExperienceInterface,
-} from "../internals";
+} from '../internals';
 
 export type ApiModelType =
-  PersonalInfoInterface
+  | PersonalInfoInterface
   | PersonalInterestsInterface
   | LanguagesInterface
   | WorkExperienceInterface

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import {
   PersonaLInfoComponent,
@@ -25,8 +25,4 @@ import {
     SkillsComponent,
   ],
 })
-export class HomeLayoutComponent implements OnInit {
-  constructor() {}
-
-  public ngOnInit(): void {}
-}
+export class HomeLayoutComponent {}

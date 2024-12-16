@@ -1,10 +1,10 @@
 <div class="language-selector">
   <button class="dropdown-button" (click)="toggleDropdown()">
-    {{ currentLanguage | slice : 0 : 2 }}
+    {{ currentLanguage() | slice : 0 : 2 }}
   </button>
   <ul class="dropdown-menu" [class.show]="isDropdownOpen">
-    @for (language of languages; track $index) { @if (language !==
-    currentLanguage) {
+    @for (language of languages(); track $index) { @if (language !==
+    currentLanguage()) {
     <li (click)="selectLanguage(language)">
       {{ language | slice : 0 : 2 }}
     </li>
