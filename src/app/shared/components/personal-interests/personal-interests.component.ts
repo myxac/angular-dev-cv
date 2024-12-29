@@ -6,12 +6,14 @@ import {
   BaseComponent,
   PersonalInterestsInterface,
 } from '../../internals';
+import { TitleComponent } from "../title/title.component";
 
 @Component({
   selector: 'app-personal-interests',
   templateUrl: './personal-interests.component.html',
   styleUrls: ['./personal-interests.component.scss'],
   standalone: true,
+  imports: [TitleComponent],
 })
 export class PersonalInterestsComponent
   extends BaseComponent

@@ -3,13 +3,14 @@ import { takeUntil, tap } from 'rxjs';
 
 import { BaseComponent, CertificationsInterface } from '../../internals';
 import { SortPipe } from '../../pipes/sort.pipe';
+import { TitleComponent } from "../title/title.component";
 
 @Component({
   selector: 'app-certifications',
   templateUrl: './certifications.component.html',
   styleUrls: ['./certifications.component.scss'],
   standalone: true,
-  imports: [SortPipe],
+  imports: [SortPipe, TitleComponent, TitleComponent],
 })
 export class CertificationsComponent
   extends BaseComponent

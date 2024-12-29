@@ -3,15 +3,10 @@
 .languages-block {
   padding: 0 20px;
 
-  &__title {
+  ::ng-deep .title {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
-    .main-text {
-      width: 100%;
-      text-align: center;
-    }
   }
 
   .language-list {

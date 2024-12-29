@@ -1,4 +1,9 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { takeUntil, tap } from 'rxjs';
 import { KeyValuePipe } from '@angular/common';
 
@@ -6,6 +11,7 @@ import {
   BaseComponent,
   PersonalInfoInterface,
   StructuredDataService,
+  TitleComponent,
 } from '../../internals';
 
 @Component({
@@ -13,7 +19,7 @@ import {
   templateUrl: './persona-l-info.component.html',
   styleUrls: ['./persona-l-info.component.scss'],
   standalone: true,
-  imports: [KeyValuePipe],
+  imports: [KeyValuePipe, TitleComponent],
 })
 export class PersonaLInfoComponent
   extends BaseComponent

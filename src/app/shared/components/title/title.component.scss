@@ -1,0 +1,11 @@
+@import 'src/styles/scss/variables';
+
+.title {
+  color: $blue;
+  font-size: 24px;
+
+  hr {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

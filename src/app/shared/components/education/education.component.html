@@ -1,9 +1,6 @@
 @if (model?.educationList?.length) {
 <div class="education">
-  <div class="education__title title">
-    <h2 class="title">{{ model?.title }}</h2>
-    <hr />
-  </div>
+<app-title title="{{model?.title}}"></app-title>
   @for (education of model?.educationList; track education.degree) {
     <div class="education-item">
       <div class="education-header">

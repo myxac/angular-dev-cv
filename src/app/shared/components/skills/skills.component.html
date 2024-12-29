@@ -1,9 +1,6 @@
 @if (model?.skills) {
 <div class="skills">
-  <div class="skills__title title">
-    <h2 class="title">{{ model?.title }}</h2>
-    <hr />
-  </div>
+<app-title title="{{model?.title}}"></app-title>
   <div class="skills__list">
     @for (item of model?.skills | keyvalue; track item.key) {
     <div class="skills-item">

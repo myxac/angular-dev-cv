@@ -1,5 +1,5 @@
 export { BaseComponent } from './components/base/base.component';
-
+export { TitleComponent } from './components/title/title.component';
 export { PersonaLInfoComponent } from './components/persona-l-info/persona-l-info.component';
 export {
   PersonalInfoInterface,

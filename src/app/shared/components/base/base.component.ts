@@ -1,6 +1,7 @@
 import { Component, effect, inject, OnDestroy, OnInit } from '@angular/core';
-import { ApiService, LanguageService } from '../../internals';
 import { Subject } from 'rxjs';
+
+import { ApiService, LanguageService } from '../../internals';
 
 @Component({
   selector: 'app-parent-block',

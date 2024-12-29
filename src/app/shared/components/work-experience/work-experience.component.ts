@@ -1,13 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil, tap } from 'rxjs';
 
-import { BaseComponent, WorkExperienceInterface } from '../../internals';
+import {
+  BaseComponent,
+  WorkExperienceInterface,
+  TitleComponent,
+} from '../../internals';
 
 @Component({
   selector: 'app-work-experience',
   templateUrl: './work-experience.component.html',
   styleUrls: ['./work-experience.component.scss'],
   standalone: true,
+  imports: [TitleComponent],
 })
 export class WorkExperienceComponent
   extends BaseComponent

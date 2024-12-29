@@ -1,9 +1,6 @@
 @if (model?.erfahrung?.length) {
 <div class="work-experience">
-  <div class="work-experience__title title">
-    <h2 class="title">{{ model?.title }}</h2>
-    <hr />
-  </div>
+  <app-title title="{{ model?.title }}"></app-title>
   @for (experience of model?.erfahrung; track experience.tasks) {
   <div class="work-experience__experience-item">
     <div class="experience-header">

@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil, tap } from 'rxjs';
 
-import { BaseComponent, EducationInterface } from '../../internals';
+import { BaseComponent, EducationInterface, TitleComponent } from '../../internals';
 
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss'],
   standalone: true,
+  imports: [TitleComponent]
 })
 export class EducationComponent
   extends BaseComponent

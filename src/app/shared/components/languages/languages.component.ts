@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil, tap } from 'rxjs';
 
-import { BaseComponent, LanguagesInterface } from '../../internals';
+import { BaseComponent, LanguagesInterface, TitleComponent } from '../../internals';
 
 @Component({
   selector: 'app-languages',
   templateUrl: './languages.component.html',
   styleUrls: ['./languages.component.scss'],
   standalone: true,
-  imports: [],
+  imports: [TitleComponent],
 })
 export class LanguagesComponent
   extends BaseComponent

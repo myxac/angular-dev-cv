@@ -1,9 +1,6 @@
 @if (model) {
 <div class="certification">
-  <div class="certification__title title">
-    <h2 class="title">{{ model.title }}</h2>
-    <hr />
-  </div>
+  <app-title title="{{model.title}}"></app-title>
   <div class="certification__list">
     @for (item of model.certificationsList | sort : 'desc'; track item.order) {
     <div class="certification-item">

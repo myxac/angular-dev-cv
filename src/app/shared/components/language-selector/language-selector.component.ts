@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { LanguageService, ApiService } from '../../internals';
 import { SlicePipe } from '@angular/common';
