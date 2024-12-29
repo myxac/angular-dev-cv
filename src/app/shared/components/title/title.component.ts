@@ -9,4 +9,5 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
 })
 export class TitleComponent {
   public title = input.required<string>();
+  public center = input<boolean>(false);
 }

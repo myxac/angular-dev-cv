@@ -1,5 +1,5 @@
 <div class="personal-interests">
-<app-title title="{{model?.title}}"></app-title>
+<app-title title="{{model?.title}}" [center]="true"></app-title>
   <div class="contact-info">
     @if (model) { @for (item of model.interests; track $index) {
     <p class="item">{{ item }}</p>

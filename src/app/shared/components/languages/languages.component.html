@@ -1,6 +1,6 @@
 @if (model) {
 <div class="languages-block">
-  <app-title title="{{ model.title }}"></app-title>
+  <app-title title="{{ model.title }}" [center]="true"></app-title>
   <ul class="language-list">
     @for (language of model.languageKnowledge; track $index) {
     <li class="language-item">

@@ -1,18 +1,12 @@
-@import 'src/styles/scss/variables';
+@import "src/styles/scss/variables";
 
 .personal-interests {
   padding: 0 20px;
 
-  ::ng-deep .title {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   .contact-info {
     .item {
       margin: 14px 0;
-      font-size: .9rem;
+      font-size: 0.9rem;
       text-decoration: none;
       color: $black;
 

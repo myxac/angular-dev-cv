@@ -3,7 +3,7 @@
   <div class="personal-info__photo">
     <div class="background-image"></div>
   </div>
-  <app-title title="{{model.title}}"></app-title>
+  <app-title title="{{model.title}}" [center]="true"></app-title>
   <div class="contact-info">
     @for (item of ($any(model).personalData | keyvalue); track item) { @if
     (item.value) {
