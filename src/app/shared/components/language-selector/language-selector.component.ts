@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 
-import { LanguageService, ApiService } from '../../internals';
+import { LanguageService } from '../../internals';
 import { SlicePipe } from '@angular/common';
 
 @Component({
@@ -16,7 +16,6 @@ export class LanguageSelectorComponent {
   public isDropdownOpen: boolean = false;
 
   private languageService = inject(LanguageService);
-  private apiService = inject(ApiService);
 
   public toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -25,12 +24,6 @@ export class LanguageSelectorComponent {
   public selectLanguage(language: string): void {
     this.currentLanguage.set(language);
     this.isDropdownOpen = false;
-    this.languageChanged(language);
-  }
-
-  public languageChanged(language: string): void {
-    this.apiService.setDefaultLanguage(language);
-
     this.languageService.defaultLanguage.set(language);
   }
 }

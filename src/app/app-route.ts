@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 export class RoutesPaths {
   public static readonly homePage = '';
+  public static readonly notFoundPage = 'not-found';
 }
 
 export const APP_ROUTES: Routes = [
@@ -13,5 +14,17 @@ export const APP_ROUTES: Routes = [
         (m) => m.HomeLayoutComponent
       ),
   },
+  {
+    path: RoutesPaths.notFoundPage,
+    pathMatch: 'full',
+    loadComponent() {
+      return import('./page-not-found/page-not-found.component').then(
+        (m) => m.PageNotFoundComponent
+      );
+    },
+  },
+  {
+    path: '**',
+    redirectTo: RoutesPaths.notFoundPage,
+  },
 ];
-

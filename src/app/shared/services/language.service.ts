@@ -1,9 +1,8 @@
 import { Injectable, signal } from '@angular/core';
-import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
-  public defaultLanguage = signal<string>('');
+  public defaultLanguage = signal<string>('DE');
 }

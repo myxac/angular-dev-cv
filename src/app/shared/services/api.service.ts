@@ -1,4 +1,4 @@
-import { Injectable, signal, Signal } from '@angular/core';
+import { inject, Injectable, signal, Signal } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, Observable, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -7,6 +7,7 @@ import {
   ApiModelType,
   buildApiModel,
   builSocialMediaLinksModel,
+  LanguageService,
   SocialMediaLinksInterface,
 } from '../internals';
 
@@ -15,9 +16,8 @@ import {
 })
 export class ApiService {
   public socialMediaLinks: Signal<SocialMediaLinksInterface | undefined>;
-  public componentData: Signal<ApiModelType | undefined> = signal(undefined);
 
-  private defaultLanguage = signal('DE');
+  private readonly languageService = inject(LanguageService);
 
   constructor(private firestore: AngularFirestore) {
     this.socialMediaLinks = toSignal(
@@ -30,9 +30,6 @@ export class ApiService {
     );
   }
 
-  public setDefaultLanguage(language: string): void {
-    this.defaultLanguage.set(language);
-  }
   public getComponentData(component: string): Observable<ApiModelType> {
     return this.firestore
       .collection('resume')
@@ -40,7 +37,7 @@ export class ApiService {
       .valueChanges()
       .pipe(
         map((data: any) =>
-          buildApiModel(component, data[this.defaultLanguage()])
+          buildApiModel(component, data[this.languageService.defaultLanguage()])
         )
       );
   }
